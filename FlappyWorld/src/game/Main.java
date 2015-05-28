@@ -36,16 +36,12 @@ public class Main extends Application {
 	private ImageView getReady = new ImageView("getready.png");
 	private ImageView gameOver = new ImageView("gameover.png");
 
-
 	private Ground ground = null;
 	private Obstacle pipe = new Obstacle("/obstacle_bottom.png", "/obstacle_top.png");
 	private String url = getClass().getResource("/flappy.png").toString();
 	private String URL = getClass().getResource("/flap.mp3").toString();
 	private Media m = new Media(URL);
 	private MediaPlayer player = new MediaPlayer(m);
-
-
-
 
 	protected static int score = 0;
 	
@@ -66,6 +62,7 @@ public class Main extends Application {
 	private double calcTime(double distance, double velocity){
 		return ((-velocity+Math.sqrt(velocity*velocity+(2*g*distance)))/g);
 	}
+	
 	private void checkLocation(){
 		double threshold = 8;
 		if(flappy.getY()>=max_y-threshold || flappy.intersects(pipe.getX1(), pipe.getY1(), 52, 320) 
@@ -80,12 +77,10 @@ public class Main extends Application {
 			@Override
 			protected double curve (double t){
 				checkLocation();
-				
 				text = new Text(Integer.toString(score));
 				text.setLayoutX(20);
 				text.setLayoutY(50);
-			    text.setFont(Font.font("Verdana", 36));
-			    
+				text.setFont(Font.loadFont(getClass().getResource("/Orbitron-Regular.ttf").toString(), 36));
 			    root.getChildren().remove(scores);
 			    scores.getChildren().clear();
 			    scores.getChildren().add(text);
@@ -130,7 +125,6 @@ public class Main extends Application {
 					}
 	            }
 	        });
-
 	}
 	
 	public void restartApplication() throws IOException {
@@ -185,18 +179,13 @@ public class Main extends Application {
 				});
 			}
 
-
-	
-	
-	
-
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		//TODO 1: add background
 		ground = new Ground("/ground.png");
 		ground.movingGround(sceneHeight, sceneWidth);
 		bkgrd = new ImageView("background2.png");
-		clickRun.setLayoutX(sceneWidth/5);
+		clickRun.setLayoutX(sceneWidth/5.5);
 		clickRun.setLayoutY(sceneHeight/5);
 		getReady.setLayoutX(sceneWidth/4);
 		getReady.setLayoutY(sceneHeight/5);

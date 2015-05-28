@@ -46,7 +46,7 @@ public class Obstacle {
 					bound = true;
 					random();
 				}
-				System.out.println(t);
+//				System.out.println(t);
 				if(t >= .6 && bound && t != 1) {
 					bound = false;
 					Main.score += 1;
@@ -79,11 +79,11 @@ public class Obstacle {
 	}
 	
 	public double getX1() {
-		return bottom.layoutXProperty().doubleValue() + bottom.getTranslateX() + bottom.xProperty().doubleValue();
+		return bottom.layoutXProperty().doubleValue() + bottom.getTranslateX(); // + bottom.xProperty().doubleValue();
 	}
 	
 	public double getX2() {
-		return top.layoutXProperty().doubleValue() + top.getTranslateX() + top.xProperty().doubleValue();
+		return top.layoutXProperty().doubleValue() + top.getTranslateX();// + top.xProperty().doubleValue();
 	}
 	
 	public double getY1() {
